@@ -28,7 +28,6 @@ body {
 }
 
 .logo-container {
-    /* border: 2px solid black; */
     display: flex;
     align-items: center;
     padding-left: 5px;
@@ -39,20 +38,21 @@ body {
     color: var(--white);
 }
 .logo-container svg {
-    height: 75px;
-    width: 75px;
+    height: 65px;
+    width: 65px;
 }
 .logo-container svg path {
     fill: #3751FF;
 }
 
 .page {
-    border-radius: 5px;
-    margin-left: 8px;
-    margin-right: 8px;
+    border-radius: 8px;
+    margin-left: 9px;
+    margin-right: 9px;
     height: 60px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 .page a {
     font-size: 18px;
@@ -60,13 +60,19 @@ body {
     color: var(--grey);
 }
 .page .outline {
-    border-radius: 5px;
-    width: 6px;
+    border-radius: 8px;
+    width: 5px;
     height: 100%;
     margin-right: 20px;
 }
 .page svg {
     margin-right: 26px;
+}
+.page:hover > a {
+    color: var(--light-magenta);
+}
+.page:hover > svg > path {
+    fill: var(--light-magenta);
 }
 
 .registrar svg {
@@ -98,7 +104,6 @@ body {
 
 .page.active {
     background-color: var(--medium-blue);
-    
 }
 .page.active .outline {
     background-color: var(--light-magenta);
@@ -107,7 +112,7 @@ body {
     fill: var(--light-magenta);
 }
 .page.active a {
-    color: var(--white);
+    color: var(--light-magenta);
 }
 
 
