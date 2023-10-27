@@ -1,4 +1,4 @@
-const navLinks = document.querySelectorAll('.page');
+const navPages = document.querySelectorAll('.page');
 let currentPage = document.querySelector('.registrar');
 
 // cargar el contenido principal
@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // cambiar de pagina
-navLinks.forEach(link => {
-    link.addEventListener('click', (event) => {
+navPages.forEach(page => {
+    page.addEventListener('click', (event) => {
         event.preventDefault();
-        if (link.classList[1] === currentPage) return
+        if (page.classList[1] === currentPage) return
         currentPage.classList.remove('active');
-        currentPage = link;
+        currentPage = page;
         currentPage.classList.add('active');
-        const href = link.querySelector('a').getAttribute('href');
+        const href = page.querySelector('a').getAttribute('href');
         $('main').load(href);
     })
 });
