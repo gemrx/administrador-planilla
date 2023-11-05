@@ -2,10 +2,12 @@
 
 :root {
     --white: #F7F8FC;
+    --blue: #3751FF;
     --dark-blue: #363740;
     --medium-blue: #3E4049;
     --light-magenta: #DDE2FF;
     --grey: #A4A6B3;
+    --black: #202124;
 }
 
 * {
@@ -22,7 +24,7 @@ body {
 
 /* Dashboard */
 .dashboard {
-    height: 100vh;
+    min-height: 100vh;
     width: 270px;
     background-color: var(--dark-blue);
 }
@@ -42,28 +44,23 @@ body {
     width: 65px;
 }
 .logo-container svg path {
-    fill: #3751FF;
+    fill: var(--blue);
 }
 
 .page {
-    border-radius: 8px;
+    border-radius: 5px;
     margin-left: 9px;
     margin-right: 9px;
     height: 60px;
     display: flex;
     align-items: center;
+    padding-left: 18px;
     cursor: pointer;
 }
 .page a {
     font-size: 18px;
     text-decoration: none;
     color: var(--grey);
-}
-.page .outline {
-    border-radius: 8px;
-    width: 5px;
-    height: 100%;
-    margin-right: 20px;
 }
 .page svg {
     margin-right: 26px;
@@ -83,9 +80,6 @@ body {
     fill: var(--grey);
 }
 
-.modificar .outline {
-    background-color: var(--dark-blue);
-}
 .modificar svg {
     height: 22px;
     width: 22px;
@@ -94,9 +88,6 @@ body {
   fill: var(--grey);
 }
 
-.planilla .outline {
-    background-color: var(--dark-blue);
-}
 .planilla svg {
     width: 23px;
     height: 23px;
@@ -105,14 +96,82 @@ body {
 .page.active {
     background-color: var(--medium-blue);
 }
-.page.active .outline {
-    background-color: var(--light-magenta);
-}
 .page.active svg path {
     fill: var(--light-magenta);
 }
 .page.active a {
     color: var(--light-magenta);
+}
+
+
+/* Main Section */
+main {
+    flex-grow: 1;
+}
+
+form {
+    width: 100%;
+    height: 100%;
+    padding-top: 40px;
+    padding-left: 10px;
+}
+
+label {
+    font-size: 15px;
+    font-weight: 600;
+    height: 20.8px;
+    color: var(--black);
+    margin-bottom: 5px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input {
+    width: 200px;
+    border: 1px solid var(--grey);
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--black);
+    padding: 5px;
+}
+input:focus {
+    outline: 1px solid var(--blue);
+    border-color: var(--blue);
+}
+
+select {
+    border: 1px solid var(--grey);
+    color: var(--black);
+    font-size: 15px;
+    font-weight: 500;
+    height: 29.2px;
+    border-radius: 5px;
+    padding: 5px;
+}
+select:focus {
+    outline: 1px solid var(--blue);
+    border-color: var(--blue);
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    margin-bottom: 30px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+#input-asiento, 
+#input-tomo {
+    width: 120px;
 }
 
 
