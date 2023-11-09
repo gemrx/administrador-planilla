@@ -1,14 +1,20 @@
 @font-face {
-    font-family: 'Nunito Sans';
-    src: url('../assets/fonts/NunitoSans.ttf') format("truetype-variations");
-    font-weight: 1 999;
+    font-family: Roboto;
+    src: url(../assets/fonts/Roboto-Light.ttf) format("ttf"),
+         url(../assets/fonts/Roboto-LightItalic.ttf) format("ttf"),
+         url(../assets/fonts/Roboto-Regular.ttf) format("ttf"),
+         url(../assets/fonts/Roboto-Italic.ttf) format("ttf"),
+         url(../assets/fonts/Roboto-Medium.ttf) format("ttf"),
+         url(../assets/fonts/Roboto-MediumItalic.ttf) format("ttf"),
+         url(../assets/fonts/Roboto-Bold.ttf) format("ttf"),
+         url(../assets/fonts/Roboto-BoldItalic.ttf) format("ttf");
 }
 
 :root {
-    --white: #F7F8FC;
+    --white: #faf7fc;
     --blue: #3751FF;
     --dark-blue: #363740;
-    --medium-blue: #3E4049;
+    --medium-blue: #4b5065;
     --light-magenta: #DDE2FF;
     --grey: #A4A6B3;
     --black: #202124;
@@ -21,7 +27,7 @@
 }
 
 body {
-    font-family: 'Nunito Sans', monospace;
+    font-family: Roboto, sans-serif;
     background-color: var(--white);
     display: flex;
 }
@@ -127,10 +133,15 @@ form h1 {
 
 label {
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
     height: 20.8px;
     color: var(--black);
     margin-bottom: 5px;
+}
+
+.opcional {
+    font-weight: 400;
+    font-style: italic
 }
 
 input::-webkit-outer-spin-button,
@@ -145,22 +156,25 @@ input {
     font-size: 15px;
     font-weight: 400;
     color: var(--black);
-    padding: 5px;
+    padding: 8px;
 }
 input:focus {
     outline: 1px solid var(--blue);
     border-color: var(--blue);
 }
+input[type="date"] {
+    font-family: Roboto, sans-serif;
+}
+
 
 select {
     border: 1px solid var(--grey);
     background-color: white;
     color: var(--black);
     font-size: 15px;
-    font-weight: 500;
-    height: 29.2px;
+    font-weight: 400;
     border-radius: 5px;
-    padding: 5px;
+    padding: 8px;
 }
 select:focus {
     outline: 1px solid var(--blue);

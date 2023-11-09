@@ -64,8 +64,8 @@
             </div>
             <div class="row">
                 <div class="column">
-                    <label for="">Género</label>
-                    <select name="genero-sexo" id="genero-sexo">
+                    <label for="select-genero">Género</label>
+                    <select name="select-genero" id="select-genero">
                         <option value="M" selected>Masculino</option>
                         <option value="F">Femenino</option>
                     </select>
@@ -77,7 +77,10 @@
                     <input type="text" name="input-nombre" id="input-nombre">
                 </div>
                 <div class="column">
-                    <label for="">Segundo Nombre</label>
+                    <label for="">
+                        <span>Segundo Nombre</span>
+                        <span class="opcional">(opcional)</span>
+                    </label>
                     <input type="text" name="input-segundo-nombre" id="input-segundo-nombre">
                 </div>
             </div>
@@ -87,12 +90,18 @@
                     <input type="text" name="input-apellido" id="input-apellido">
                 </div>
                 <div class="column">
-                    <label for="">Segundo Apellido</label>
+                    <label for="input-segundo-apellido">
+                        <span>Segundo Apellido</span>
+                        <span class="opcional">(opcional)</span>
+                    </label>
                     <input type="text" name="input-segundo-apellido" id="input-segundo-apellido">
                 </div>
                 <div class="column">
-                    <label for="">Apellido de Casada</label>
-                    <input type="text" name="input-appellido-casada" id="input-apellido-casada">
+                    <label for="input-appellido-casada" class="label-apellido-casada oculto">
+                        <span>Apellido de Casada</span>
+                        <span class="opcional">(opcional)</span>
+                    </label>
+                    <input type="text" name="input-appellido-casada" id="input-apellido-casada" class="oculto">
                 </div>
             </div>
             <div class="row">
@@ -115,8 +124,8 @@
             </div>
             <div class="row">
                 <div class="column">
-                    <label for="input-peso">Tipo de Sangre</label>
-                    <select name="genero-sexo" id="genero-sexo">
+                    <label for="select-tipo-sangre">Tipo de Sangre</label>
+                    <select name="select-tipo-sangre" id="select-tipo-sangre">
                         <option value="A+" selected>A+</option>
                         <option value="A-">A-</option>
                         <option value="B+">B+</option>
