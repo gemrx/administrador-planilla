@@ -1,5 +1,6 @@
-// setear la fecha inicial
 const inputFecha =  document.querySelector('#input-fecha');
+
+// setear la fecha inicial
 let fechaActual = new Date();
 let actualyear = fechaActual.getFullYear();
 let mesActual = String(fechaActual.getMonth() + 1).padStart(2, '0');
