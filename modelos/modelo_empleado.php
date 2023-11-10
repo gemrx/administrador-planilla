@@ -3,7 +3,7 @@
 
 	function registrarEmpleado($prefijo, $tomo, $asiento, $nombre, $apellido, $edad) {
         global $conexion;
-        $query = ""; // query que se ejecutar en la base de datos
+        $query = ""; // query que se ejecutara en la base de datos
     }
 
     function buscarEmpleado($prefijo, $tomo, $asiento) {
