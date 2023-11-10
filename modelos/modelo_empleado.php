@@ -1,18 +1,55 @@
 <?php 
     require(__DIR__ . "../config/conexion.php"); // obtener la conexion
 
-	function registrarEmpleado($prefijo, $tomo, $asiento, $nombre, $apellido, $edad) {
+	function registrarEmpleado($datosEmpleado) { // datos empleado sera un arreglo asociativo
         global $conexion;
-        $query = ""; // query que se ejecutara en la base de datos
+        
+
+        // retornar true o false dependiendo si se pudo registrar al empleado
     }
 
-    function buscarEmpleado($prefijo, $tomo, $asiento) {
+    function buscarEmpleado($cedula) {
         global $conexion;
-        $query = ""; // query que se ejecutara en la base de datos
+
+
+        // retornar un arreglo asociativo con los datos del empleado
     }
 
-    function modificarEmpleado($prefijo, $tomo, $asiento, $nombre, $apellido, $edad) {
+    function modificarEmpleado($datosEmpleado) { // datos empleado sera un arreglo asociativo
         global $conexion;
-        $query = ""; // query que se ejecutar en la base de datos
+
+
+        // retornar true o false dependiendo si pudo modificar al empleado
     }
+
+
+    $datos_registrar = array(
+        'prefijo' => '',
+        'tomo' => '',
+        'asiento' => '',
+        'genero' => '',
+        'cedula' => '',
+        'nombre1' => '',
+        'nombre2' => null,
+        'apellido1' => '',
+        'apellido2' => null,
+        'estado_civil' => '',
+        'apellido_casada' => null,
+        'usa_apellido_casada' => '',
+        'fecha_nacimiento' => 'YYYY-MM-DD',
+        'peso' => '',
+        'estatura' => '',
+        'tipo_sangre' => '',
+        'condicion_fisica' => '',
+        'pais' => '',
+        'provincia' => '',
+        'distrito' => '',
+        'corregimiento' => '',
+        'comunidad' => '',
+        'calle' => null,
+        'casa' => null,
+        'estado' => '1'
+    );
+
+    registrarEmpleado($datos_registrar);
 ?>
