@@ -232,6 +232,11 @@
                     <input type="text" name="input-casa" id="input-casa">
                 </div>
             </div>
+            <div class="row">
+                <div class="column">
+                    <button id="submit">Registrar</button>
+                </div>
+            </div>
         </form>
     </main>
 </body>
