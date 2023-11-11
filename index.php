@@ -74,6 +74,17 @@
             </div>
             <div class="row">
                 <div class="column">
+                    <label for="select-estado-civil">Estado Civil</label>
+                    <select name="select-estado-civil" id="select-estado-civil">
+                        <option value="SOLTERO" selected>Soltero</option>
+                        <option value="CASADO">Casado</option>
+                        <option value="VIUDO">Viudo</option>
+                        <option value="DIVORCIADO">Divorciado</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
                     <label for="">Nombre</label>
                     <input type="text" name="input-nombre" id="input-nombre">
                 </div>
@@ -222,13 +233,19 @@
             </div>
             <div class="row">
                 <div class="column">
-                    <label for="input-calle">Calle</label>
+                    <label for="input-calle">
+                        <span>Calle</span>
+                        <span class="opcional">(opcional)</span>
+                    </label>
                     <input type="text" name="input-calle" id="input-calle">
                 </div>
             </div>
             <div class="row">
                 <div class="column">
-                    <label for="input-casa">Casa</label>
+                    <label for="input-casa">
+                        <span>Casa</span>
+                        <span class="opcional">(opcional)</span>
+                    </label>
                     <input type="text" name="input-casa" id="input-casa">
                 </div>
             </div>

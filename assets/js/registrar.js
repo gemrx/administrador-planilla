@@ -13,6 +13,7 @@ const selectPais = document.querySelector('#select-pais');
 const selectProvincia = document.querySelector('#select-provincia');
 const selectDistrito = document.querySelector('#select-distrito');
 const selectCorregimiento = document.querySelector('#select-corregimiento');
+const selectEstadoCivil = document.querySelector('#select-estado-civil');
 
 //
 // FUNCIONES
@@ -30,10 +31,27 @@ function setearFechaInicial() {
 // EVENT LISTENERS
 //
 
-// mostrar / ocultar apellido de casada
+// cambiar genero de los estados civiles
 selectGenero.addEventListener('change', () => {
-    
     if (selectGenero.value === 'F') {
+        let nuevosEstadosCiviles = `<option value="SOLTERA" selected>Soltera</option>
+                                    <option value="CASADA">Casada</option>
+                                    <option value="VIUDA">Viuda</option>
+                                    <option value="DIVORCIADA">Divorciada</option>`
+        selectEstadoCivil.innerHTML = nuevosEstadosCiviles;
+    } else {
+        let nuevosEstadosCiviles = `<option value="SOLTERO" selected>Soltero</option>
+                                    <option value="CASADO">Casado</option>
+                                    <option value="VIUDO">Viudo</option>
+                                    <option value="DIVORCIADO">Divorciado</option>`
+        selectEstadoCivil.innerHTML = nuevosEstadosCiviles;
+    }
+})
+
+
+// mostrar o ocultar apellido de casada
+selectEstadoCivil.addEventListener('change', () => {
+    if (selectEstadoCivil.value === 'CASADA' || selectEstadoCivil.value === 'VIUDA') {
         labelApellidoCasada.classList.remove('oculto');
         inputApellidoCasada.classList.remove('oculto');
     } else {
