@@ -60,7 +60,7 @@
     function buscarEmpleado($cedula) {
         global $conexion;
 
-        $query = "SELECT * FROM empleados WHERE cedula = '$cedula'";
+        $query = "SELECT * FROM generales WHERE cedula = '$cedula'";
         $resultado = mysqli_query($conexion, $query);
     
         // Si se encontró el empleado, devolver un array asociativo con los datos, de lo contrario, devolver null
@@ -93,7 +93,7 @@
         $casa = $datosEmpleado['casa'];
         $estado = $datosEmpleado['estado'];
     
-        $query = "UPDATE empleados 
+        $query = "UPDATE generales 
                   SET nombre1 = '$nombre1', 
                       nombre2 = '$nombre2', 
                       apellido1 = '$apellido1', 
