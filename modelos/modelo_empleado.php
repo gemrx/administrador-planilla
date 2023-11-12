@@ -32,7 +32,7 @@
         $estado = $arreglo_asociativo['estado'];
     
         // Preparar la consulta SQL para la inserción
-        $query = "INSERT INTO nombre_de_la_tabla (
+        $query = "INSERT INTO generales (
                     prefijo, tomo, asiento, genero, cedula, nombre1, nombre2, apellido1, apellido2,
                     estado_civil, apellido_casada, usa_apellido_casada, fecha_nacimiento, peso, estatura,
                     tipo_sangre, condicion_fisica, pais, provincia, distrito, corregimiento, comunidad,

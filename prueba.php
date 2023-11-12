@@ -1,12 +1,23 @@
 <?php
-    require(__DIR__ ."/modelos/modelo_ubicacion.php");
+   
+    require(__DIR__ ."/modelos/modelo_empleado.php");
     
-    // obtener los distritos en base a la provincia porporcionada
-    $distritos = obtenerDistritosDeLaPronvincia(13); 
+    $datosEmpleado = [
+        'prefijo' => '8',
+        'tomo' => '555',
+        'asiento' => '123',
+        'genero' => 'Masculino',
+        'cedula' => '123456789',
+        'nombre1' => 'Juan',
+        'nombre2' => 'Carlos',
+        // ... (otros campos)
+    ];
+    $resultado = registrarEmpleado($datosEmpleado);
 
-    // elegir un distrito de forma aleatoria
-    $indice_distrito = rand(0, count($distritos) - 1);
-    $distrito_elegido = $distritos[$indice_distrito];
-
-    print_r($distrito_elegido);
+    if ($resultado) {
+        echo "Empleado registrado correctamente.\n";
+    } else {
+        echo "Error al registrar el empleado.\n";
+    }
+        
 ?>
