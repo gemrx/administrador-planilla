@@ -5,38 +5,45 @@
 
         // si es un cambio de provincia, se debe enviar nuevos distritos y nuevos corregimientos 
         if ($_GET["accion"] == "cambioDeProvincia") {
-            $provincia = $_GET["provincia"];
+            $codigo_provincia = $_GET["codigoProvincia"];
 
-            // obtener los distritos en base a la provincia porporcionada
-            $distritos = obetnerDistritosDeLaPronvincia($provincia); 
+            // obtener los distritos en base al codigo de la provincia porporcionada
+            $distritos = obtenerDistritosDeLaPronvincia($codigo_provincia); 
 
-            // elegir un distrito de forma aleatoria
-            $indice_distrito = rand(0, count($distritos) - 1);
-            $distrito_elegido = $distritos[$indice_distrito];
+            // elegir el codigo de un distrito de forma aleatoria
+            $indice = rand(0, count($distritos) - 1);
+            $codigo_elegido = $distritos[$indice]["codigo_distrito"];
 
-            // obtener los corregimientos en base al distrito elegido
-            $corregimientos = obtenerCorregimientosDelDistrito($distrito_elegido);
+            // obtener los corregimientos en base al codigo del distrito elegido
+            $corregimientos = obtenerCorregimientosDelDistrito($codigo_elegido);
 
             // hacer la estrcutura html de los nuevos distritos
             $distritos_html = "";
             foreach($distritos as $distrito) {
-                $distrito_formateado = ucwords(strtolower(mb_strtolower($distrito, 'UTF-8')));
-                if ($distrito == $distrito_elegido) {
-                    $distritos_html .= "<option value=\"$distrito\" selected>$distrito_formateado</option>";
+                $nombre = $distrito["nombre_distrito"];
+                $codigo = $distrito["codigo_distrito"];
+                $nombre_formateado = ucwords(strtolower(mb_strtolower($nombre, 'UTF-8')));
+                if ($codigo == $codigo_elegido) {
+                    $distritos_html .= "<option value=\"$codigo\" selected>$nombre_formateado</option>";
                 } else {
-                    $distritos_html .= "<option value=\"$distrito\">$distrito_formateado</option>";
+                    $distritos_html .= "<option value=\"$codigo\">$nombre_formateado</option>";
                 }
             }
 
             // hacer la estrcutura html de los nuevos corregimientos
             $corregimientos_html = "";
             foreach($corregimientos as $corregimiento) {
-                $corregimiento_formateado = ucwords(strtolower(mb_strtolower($corregimiento, 'UTF-8')));
-                $corregimientos_html .= "<option value=\"$corregimiento\">$corregimiento_formateado</option>";
+                $nombre = $corregimiento["nombre_corregimiento"];
+                $codigo = $corregimiento["codigo_corregimiento"];
+                $nombre_formateado = ucwords(strtolower(mb_strtolower($nombre, 'UTF-8')));
+                $corregimientos_html .= "<option value=\"$codigo\">$nombre_formateado</option>";
             }
 
             // enviar las estructuras html en formato json
-            $response = array("nuevosDistritos" => $distritos_html, "nuevosCorregimientos" => $corregimientos_html);
+            $response = array(
+                "nuevosDistritos" => $distritos_html, 
+                "nuevosCorregimientos" => $corregimientos_html
+            );
             echo json_encode($response); 
         }
 
@@ -44,21 +51,23 @@
 
         // si es un cambio de distrito, se deben enviar nuevos corregimientos
         if ($_GET["accion"] == "cambioDeDistrito") {
-            $distrito = $_GET["distrito"];
-            $corregimientos = obtenerCorregimientosDelDistrito($distrito);
+            $codigo_distrito = $_GET["codigoDistrito"];
+            $corregimientos = obtenerCorregimientosDelDistrito($codigo_distrito);
 
-            // elegir un corregimiento de forma aleatoria
-            $indice_corregimiento = rand(0, count($corregimientos) - 1);
-            $corregimiento_elegido = $corregimientos[$indice_corregimiento];
+            // elegir el codigo de un corregimiento de forma aleatoria
+            $indice = rand(0, count($corregimientos) - 1);
+            $codigo_elegido = $corregimientos[$indice]["codigo_corregimiento"];
 
             // hacer la estructura html de los nuevos corregimientos
             $corregimientos_html = "";
             foreach($corregimientos as $corregimiento) {
-                $corregimiento_formateado = ucwords(strtolower(mb_strtolower($corregimiento, 'UTF-8')));
+                $nombre = $corregimientos["nombre_corregimiento"];
+                $codigo = $corregimientos["codigo_corregimiento"];
+                $nombre_formateado = ucwords(strtolower(mb_strtolower($nombre, 'UTF-8')));
                 if ($corregimiento == $corregimiento_elegido) {
-                    $corregimientos_html .= "<option value=\"$corregimiento\" selected>$corregimiento_formateado</option>";
+                    $corregimientos_html .= "<option value=\"$codigo\" selected>$nombre_formateado</option>";
                 } else {
-                    $corregimientos_html .= "<option value=\"$corregimiento\">$corregimiento_formateado</option>";
+                    $corregimientos_html .= "<option value=\"$codigo\">$nombre_formateado</option>";
                 }
             }
 

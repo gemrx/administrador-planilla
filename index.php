@@ -33,7 +33,7 @@
         </ul>
     </nav>
     <main>
-        <form action="">
+        <form>
             <h1>Registrar Empleado</h1>
             <div class="row">
                 <div class="column">
@@ -109,11 +109,11 @@
                     <input type="text" name="input-segundo-apellido" id="input-segundo-apellido">
                 </div>
                 <div class="column">
-                    <label for="input-appellido-casada" class="label-apellido-casada oculto">
+                    <label for="input-apellido-casada" class="label-apellido-casada oculto">
                         <span>Apellido de Casada</span>
                         <span class="opcional">(opcional)</span>
                     </label>
-                    <input type="text" name="input-appellido-casada" id="input-apellido-casada" class="oculto">
+                    <input type="text" name="input-apellido-casada" id="input-apellido-casada" class="oculto">
                 </div>
             </div>
             <div class="row">
@@ -128,7 +128,7 @@
                         <span>Estatura</span>
                         <span class="pista">(metros)</span>
                     </label>
-                    <input type="number" name="input-estatura" id="input-estatura">
+                    <input type="text" name="input-estatura" id="input-estatura" class="numerico">
                 </div>
             </div>
             <div class="row">
@@ -137,7 +137,7 @@
                         <span>Peso</span>
                         <span class="pista">(libras)</span>
                     </label>
-                    <input type="number" name="input-peso" id="input-peso">
+                    <input type="text" name="input-peso" id="input-peso" class="numerico">
                 </div>
             </div>
             <div class="row">
@@ -157,7 +157,7 @@
             <div class="row">
                 <div class="column">
                     <label for="">Condición Física</label>
-                    <input type="text" name="input-condicion-medica" id="input-condicion-medica">
+                    <input type="text" name="input-condicion-fisica" id="input-condicion-fisica">
                 </div>
             </div>
             <div class="row">
@@ -182,11 +182,13 @@
                         <?php
                             $provincias = obtenerProvinciasDePanama();
                             foreach ($provincias as $provincia) {
-                                $provincia_formateada = ucwords(strtolower(mb_strtolower($provincia, 'UTF-8'))); // mayuscula solo a las letras iniciales
-                                if ($provincia == "PANAMA OESTE") {
-                                    echo "<option value=\"$provincia\" selected>$provincia_formateada</option>";
+                                $nombre = $provincia["nombre_provincia"];
+                                $codigo = $provincia["codigo_provincia"];
+                                $nombre_formateado = ucwords(strtolower(mb_strtolower($nombre, 'UTF-8')));
+                                if ($nombre == "PANAMA OESTE") {
+                                    echo "<option value=\"$codigo\" selected>$nombre_formateado</option>";
                                 } else {
-                                    echo "<option value=\"$provincia\">$provincia_formateada</option>";
+                                    echo "<option value=\"$codigo\">$nombre_formateado</option>";
                                 }
                             }
                         ?>
@@ -196,13 +198,15 @@
                     <label for="select-distrito" class="label-distrito">Distrito</label>
                     <select name="select-distrito" id="select-distrito">
                         <?php
-                            $distritos = obetnerDistritosDeLaPronvincia("PANAMA OESTE");
+                            $distritos = obtenerDistritosDeLaPronvincia("13");
                             foreach ($distritos as $distrito) {
-                                $distrito_formateado = ucwords(strtolower(mb_strtolower($distrito, 'UTF-8'))); // mayuscula solo a las letras iniciales
-                                if ($distrito == "LA CHORRERA") {
-                                    echo "<option value=\"$distrito\" selected>$distrito_formateado</option>";
+                                $nombre = $distrito["nombre_distrito"];
+                                $codigo = $distrito["codigo_distrito"];
+                                $nombre_formateado = ucwords(strtolower(mb_strtolower($nombre, 'UTF-8')));
+                                if ($nombre == "LA CHORRERA") {
+                                    echo "<option value=\"$codigo\" selected>$nombre_formateado</option>";
                                 } else {
-                                    echo "<option value=\"$distrito\">$distrito_formateado</option>";
+                                    echo "<option value=\"$codigo\">$nombre_formateado</option>";
                                 }
                             }
                         ?>
@@ -212,13 +216,15 @@
                     <label for="select-corregimiento" class="label-corregimiento">Corregimiento</label>
                     <select name="select-corregimiento" id="select-corregimiento">
                         <?php
-                            $corregimientos = obtenerCorregimientosDelDistrito("LA CHORRERA");
+                            $corregimientos = obtenerCorregimientosDelDistrito("1302");
                             foreach ($corregimientos as $corregimiento) {
-                                $corregimiento_formateado = ucwords(strtolower(mb_strtolower($corregimiento, 'UTF-8'))); // mayuscula solo a las letras iniciales
-                                if ($corregimiento == "GUADALUPE") {
-                                    echo "<option value=\"$corregimiento\" selected>$corregimiento_formateado</option>";
+                                $nombre = $corregimiento["nombre_corregimiento"];
+                                $codigo = $corregimiento["codigo_corregimiento"];
+                                $nombre_formateado = ucwords(strtolower(mb_strtolower($nombre, 'UTF-8')));
+                                if ($nombre == "LA CHORRERA") {
+                                    echo "<option value=\"$codigo\" selected>$nombre_formateado</option>";
                                 } else {
-                                    echo "<option value=\"$corregimiento\">$corregimiento_formateado</option>";
+                                    echo "<option value=\"$codigo\">$nombre_formateado</option>";
                                 }
                             }
                         ?>

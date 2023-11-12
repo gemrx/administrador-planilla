@@ -1,63 +1,81 @@
 <?php 
     require(__DIR__ . "/../config/conexion.php");
 
-    // obtener todos los paises
     function obtenerPaises() {
         global $conexion;
         $query = "SELECT pais FROM paises ORDER BY pais";
         $query_result = mysqli_query($conexion, $query);
-        $paises = []; // arreglo unidimensional que contendra todos los paises
-
-        // recorrer la tabla que resulto del query fila por fila
+        $paises = [];
         while ($fila_actual = mysqli_fetch_assoc($query_result)) {
-            array_push($paises, $fila_actual["pais"]); // almacenar el nombre del pais
+            $paises[] = $fila_actual["pais"];
         }
         return $paises;
+        // retornara un arreglo unidimensional, donde cada posicion sera equivalente al nombre del pais
     }
-
-    // obtener todas la provincias de panama
+    
 	function obtenerProvinciasDePanama() {
         global $conexion;
-        $query = "SELECT * FROM provincia ORDER BY nombre_provincia";
+        $query = "SELECT codigo_provincia, nombre_provincia 
+                  FROM provincia
+                  ORDER BY nombre_provincia";
         $query_result = mysqli_query($conexion, $query);
         $provincias = []; 
-        while ($fila_actual = mysqli_fetch_assoc($query_result)) {      
-            array_push($provincias, $fila_actual["nombre_provincia"]); 
+        while ($fila_actual = mysqli_fetch_assoc($query_result)) { 
+            $provincias[] =  $fila_actual; // agregar la fila actual como un arreglo asociativo
         }
-        return $provincias;
+        return $provincias; 
+        /*
+            retornara un arreglo unidimensional, donde cada posicion sera equivalente a un arreglo asociativo y
+            las llaves del arreglo asociativo seran las columnas especificadas en el query.
+        */
     }
 
-    // obtener todos los distritos de una provincia
-    function obetnerDistritosDeLaPronvincia($provincia) {
+    function obtenerDistritosDeLaPronvincia($codigo_provincia) {
         global $conexion;
-        $query = "SELECT nombre_distrito
+
+        $query = "SELECT distrito.codigo_distrito, distrito.nombre_distrito
                   FROM distrito
                   JOIN provincia ON distrito.codigo_provincia = provincia.codigo_provincia
-                  WHERE provincia.nombre_provincia = '$provincia'
-                  ORDER BY nombre_distrito";
+                  WHERE provincia.codigo_provincia = '$codigo_provincia'
+                  ORDER BY distrito.nombre_distrito";
+
         $query_result = mysqli_query($conexion, $query);
         $distritos = [];
         while ($fila_actual = mysqli_fetch_assoc($query_result)) {
-            array_push($distritos, $fila_actual["nombre_distrito"]);
+            $distritos[] = $fila_actual; // agregar la fila actual como un arreglo asociativo
         }
         return $distritos;
+        /*
+            retornara un arreglo unidimensional, donde cada posicion sera equivalente a un arreglo asociativo y
+            las llaves del arreglo asociativo seran las columnas especificadas en el query.
+        */
     }
 
-    // obtener todos los corregimientos de un distrito
-    function obtenerCorregimientosDelDistrito($distrito) {
+    function obtenerCorregimientosDelDistrito($codigo_distrito) {
         global $conexion;
-        $query = "SELECT nombre_corregimiento
+
+        $query = "SELECT corregimiento.codigo_corregimiento, corregimiento.nombre_corregimiento
                   FROM corregimiento
                   JOIN distrito ON corregimiento.codigo_distrito = distrito.codigo_distrito
-                  WHERE distrito.nombre_distrito = '$distrito'
-                  ORDER BY nombre_corregimiento";
+                  WHERE distrito.codigo_distrito = '$codigo_distrito'";
+
         $query_result = mysqli_query($conexion, $query);
         $corregimientos = [];
         while ($fila_actual = mysqli_fetch_assoc($query_result)) {
-            array_push($corregimientos, $fila_actual["nombre_corregimiento"]);
+            $corregimientos[] = $fila_actual; // agregar la fila actual como un arreglo asociativo
         }
         return $corregimientos;
+        /*
+            retornara un arreglo unidimensional, donde cada posicion sera equivalente a un arreglo asociativo y
+            las llaves del arreglo asociativo seran las columnas especificadas en el query.
+        */
     }
 
-    // print_r(obtenerProvinciasDePanama());
+    // $corregimientos = obtenerCorregimientosDelDistrito("1302");
+    // foreach ($corregimientos as $corregimiento) {
+    //     $nombre = $corregimiento["nombre_corregimiento"];
+    //     $codigo = $corregimiento["codigo_corregimiento"];
+    //     echo "$nombre $codigo";
+    //     echo '<br>';
+    // }
 ?>

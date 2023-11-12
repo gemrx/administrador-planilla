@@ -1,6 +1,7 @@
 //
 // VARIABLES
 //
+const form = document.querySelector('form');
 const inputFecha =  document.querySelector('#input-fecha');
 const selectGenero = document.querySelector('#select-genero');
 const labelApellidoCasada = document.querySelector('.label-apellido-casada');
@@ -14,6 +15,22 @@ const selectProvincia = document.querySelector('#select-provincia');
 const selectDistrito = document.querySelector('#select-distrito');
 const selectCorregimiento = document.querySelector('#select-corregimiento');
 const selectEstadoCivil = document.querySelector('#select-estado-civil');
+const inputEstatura = document.querySelector('#input-estatura');
+const inputsNumericos = document.querySelectorAll('.numerico');
+const buttonSubmit = document.querySelector('#submit');
+const selectPrefijo = document.querySelector('#select-prefijo');
+const inputTomo = document.querySelector('#input-tomo');
+const inputAsiento = document.querySelector('#input-asiento');
+const inputNombre1 = document.querySelector('#input-nombre');
+const inputNombre2 = document.querySelector('#input-segundo-nombre');
+const inputApellido1 = document.querySelector('#input-apellido');
+const inputApellido2 = document.querySelector('#input-segundo-apellido');
+const inputPeso = document.querySelector('#input-peso');
+const selectTipoSangre = document.querySelector('#select-tipo-sangre');
+const inputCondicionFisica = document.querySelector('#input-condicion-fisica');
+const inputComunidad = document.querySelector('#input-comunidad');
+const inputCalle = document.querySelector('#input-calle');
+const inputCasa = document.querySelector('#input-casa');
 
 //
 // FUNCIONES
@@ -26,6 +43,8 @@ function setearFechaInicial() {
     let diaActual = String(fechaActual.getDate()).padStart(2, '0');
     inputFecha.value = `${actualyear}-${mesActual}-${diaActual}`;
 }
+
+
 
 //
 // EVENT LISTENERS
@@ -45,6 +64,10 @@ selectGenero.addEventListener('change', () => {
                                     <option value="VIUDO">Viudo</option>
                                     <option value="DIVORCIADO">Divorciado</option>`
         selectEstadoCivil.innerHTML = nuevosEstadosCiviles;
+        if (!inputApellidoCasada.classList.contains('oculto')) {
+            labelApellidoCasada.classList.add('oculto');
+            inputApellidoCasada.classList.add('oculto');
+        }
     }
 })
 
@@ -86,7 +109,7 @@ selectProvincia.addEventListener('change', () => {
         url: '/administrador-planilla/controladores/controlador_ubicacion.php',
         data: {
             accion: "cambioDeProvincia",
-            provincia: selectProvincia.value
+            codigoProvincia: selectProvincia.value
         },
         dataType: 'json', // tipo de dato que tendra la respuesta
         success: (response) => {
@@ -108,7 +131,7 @@ selectDistrito.addEventListener('change', () => {
         url: '/administrador-planilla/controladores/controlador_ubicacion.php',
         data: {
             accion: "cambioDeDistrito",
-            distrito: selectDistrito.value
+            codigoDistrito: selectDistrito.value
         },
         dataType: 'html', // tipo de dato que tendra la respuesta
         success: (response) => {
@@ -122,10 +145,60 @@ selectDistrito.addEventListener('change', () => {
     })
 })
 
+// prevenir ingresa el caracter 'e' en inputs de tipo numerico
+inputsNumericos.forEach(input => {
+    input.addEventListener('keydown', (event) => {
+        if (event.key === 'e') event.preventDefault();  
+    })
+});
 
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    $.ajax({
+        type: 'POST',
+        url: '/administrador-planilla/controladores/controlador_empleado.php',
+        data: "accion=registrar&" + $('form').serialize(),
+        dataType: 'json', // tipo de dato que tendra la respuesta
+        success: (response) => {
+            console.log(response);
+            alert("Empleado resgitrado con exito!")
+            document.querySelector('form').reset();
+        },
+        error: function(xhr, status, error) {
+            console.error("Error en la solicitud AJAX:", status, error);
+            console.log(xhr.responseText); // mostrar la respuesta del servidor
+        }
+    })
+});
 
 
 //
 // EJECUCIONES
 //
 setearFechaInicial();
+
+// accion: "registrarEmpleado",
+            // prefijo: selectPrefijo.value,
+            // tomo: inputTomo.value,
+            // asiento: inputAsiento.value,
+            // cedula: `${selectPrefijo.value}-${inputTomo.value}-${inputAsiento.value}`,
+            // genero: selectGenero.value,
+            // estado_civil: selectEstadoCivil.value,
+            // nombre1: inputNombre1.value,
+            // nombre2: inputNombre2.value,
+            // apellido1: inputApellido1.value,
+            // apellido2: inputApellido2.value,
+            // apellido_casada: inputApellidoCasada.value,
+            // fecha_nacimiento: inputFecha.value,
+            // estatura: inputEstatura.value,
+            // peso: inputPeso.value,
+            // tipo_de_sangre: selectTipoSangre.value,
+            // condicion_fisica: inputCondicionFisica.value,
+            // pais: selectPais.value,
+            // provincia: selectProvincia.value,
+            // distrito: selectDistrito.value,
+            // corregimiento: selectCorregimiento.value,
+            // comunidad: inputComunidad.value,
+            // calle: inputCalle.value,
+            // casa: inputApellidoCasada.value,
+            // estado: 1,

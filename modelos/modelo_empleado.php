@@ -1,22 +1,23 @@
 <?php 
-    require(__DIR__ . "../config/conexion.php"); // obtener la conexion
+    require(__DIR__ . "/../config/conexion.php"); // obtener la conexion
 
-	function registrarEmpleado($datosEmpleado) { // datos empleado sera un arreglo asociativo
+	function registrarEmpleado($arreglo_asociativo) {
         global $conexion;
-        
+        $query = "";
 
         // retornar true o false dependiendo si se pudo registrar al empleado
     }
 
     function buscarEmpleado($cedula) {
         global $conexion;
-
+        $query = "";
 
         // retornar un arreglo asociativo con los datos del empleado
     }
 
-    function modificarEmpleado($datosEmpleado) { // datos empleado sera un arreglo asociativo
+    function modificarEmpleado($arreglo_asociativo) { 
         global $conexion;
+        $query = "";
 
 
         // retornar true o false dependiendo si pudo modificar al empleado
@@ -24,8 +25,8 @@
 
 
     $datos_registrar = array(
-        'prefijo' => '',
-        'tomo' => '',
+        'prefijo' => '8',
+        'tomo' => '966',
         'asiento' => '',
         'genero' => '',
         'cedula' => '',
