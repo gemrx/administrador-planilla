@@ -60,11 +60,11 @@
 
             // hacer la estructura html de los nuevos corregimientos
             $corregimientos_html = "";
-            foreach($corregimientos as $corregimiento) {
-                $nombre = $corregimientos["nombre_corregimiento"];
-                $codigo = $corregimientos["codigo_corregimiento"];
+            foreach ($corregimientos as $corregimiento) {
+                $nombre = $corregimiento["nombre_corregimiento"];
+                $codigo = $corregimiento["codigo_corregimiento"];
                 $nombre_formateado = ucwords(strtolower(mb_strtolower($nombre, 'UTF-8')));
-                if ($corregimiento == $corregimiento_elegido) {
+                if ($corregimiento == $codigo_elegido) {
                     $corregimientos_html .= "<option value=\"$codigo\" selected>$nombre_formateado</option>";
                 } else {
                     $corregimientos_html .= "<option value=\"$codigo\">$nombre_formateado</option>";
