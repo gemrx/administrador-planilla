@@ -162,7 +162,7 @@ form.addEventListener('submit', (event) => {
         success: (response) => {
             console.log(response);
             alert("Empleado resgitrado con exito!")
-            document.querySelector('form').reset();
+            // document.querySelector('form').reset();
         },
         error: function(xhr, status, error) {
             console.error("Error en la solicitud AJAX:", status, error);
@@ -176,29 +176,3 @@ form.addEventListener('submit', (event) => {
 // EJECUCIONES
 //
 setearFechaInicial();
-
-// accion: "registrarEmpleado",
-            // prefijo: selectPrefijo.value,
-            // tomo: inputTomo.value,
-            // asiento: inputAsiento.value,
-            // cedula: `${selectPrefijo.value}-${inputTomo.value}-${inputAsiento.value}`,
-            // genero: selectGenero.value,
-            // estado_civil: selectEstadoCivil.value,
-            // nombre1: inputNombre1.value,
-            // nombre2: inputNombre2.value,
-            // apellido1: inputApellido1.value,
-            // apellido2: inputApellido2.value,
-            // apellido_casada: inputApellidoCasada.value,
-            // fecha_nacimiento: inputFecha.value,
-            // estatura: inputEstatura.value,
-            // peso: inputPeso.value,
-            // tipo_de_sangre: selectTipoSangre.value,
-            // condicion_fisica: inputCondicionFisica.value,
-            // pais: selectPais.value,
-            // provincia: selectProvincia.value,
-            // distrito: selectDistrito.value,
-            // corregimiento: selectCorregimiento.value,
-            // comunidad: inputComunidad.value,
-            // calle: inputCalle.value,
-            // casa: inputApellidoCasada.value,
-            // estado: 1,
