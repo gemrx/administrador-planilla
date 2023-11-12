@@ -160,9 +160,13 @@ form.addEventListener('submit', (event) => {
         data: "accion=registrar&" + $('form').serialize(),
         dataType: 'json', // tipo de dato que tendra la respuesta
         success: (response) => {
-            console.log(response);
-            alert("Empleado resgitrado con exito!")
-            // document.querySelector('form').reset();
+            if (response) {
+                alert("Empleado resgitrado con exito!")
+                document.querySelector('form').reset();
+                setearFechaInicial();
+            } else {
+                alert("Ha ocurrido un error al intentar resgitar el empleado!")
+            }
         },
         error: function(xhr, status, error) {
             console.error("Error en la solicitud AJAX:", status, error);
