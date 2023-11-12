@@ -1,12 +1,105 @@
 <?php
-    require(__DIR__ ."/modelos/modelo_ubicacion.php");
+   
+    require(__DIR__ ."/modelos/modelo_empleado.php");
+/*
+    $datosNuevoEmpleado = [
+        
+    'prefijo' => '8',
+    'tomo' => '990',
+    'asiento' => '1734',
+    'cedula' => '8-990-1734',
+    'genero' => 'M',
+    'nombre1' => 'Juan',
+    'nombre2' => 'Carlos',
+    'apellido1' => 'Gómez',
+    'apellido2' => 'Pérez',
+    'estado_civil' => 'Soltero',
+    'apellido_casada' => null,
+    'usa_apellido_casada' => 'No',
+    'fecha_nacimiento' => '1990-01-01',
+    'peso' => '70',
+    'estatura' => '175',
+    'tipo_sangre' => 'O+',
+    'condicion_fisica' => 'Buena',
+    'pais' => 'Panamá',
+    'provincia' => 'Panamá',
+    'distrito' => 'Panamá',
+    'corregimiento' => 'Bella Vista',
+    'comunidad' => 'ComunidadPrueba',
+    'calle' => 'CallePrueba',
+    'casa' => '123',
+    'estado' => 'Activo',
+        // ... (otros campos)
+    ];
     
-    // obtener los distritos en base a la provincia porporcionada
-    $distritos = obtenerDistritosDeLaPronvincia(13); 
+    // Llamada a la función de registro
+    $resultadoRegistro = registrarEmpleado($datosNuevoEmpleado);
+    
+    // Mostrar el resultado
+    if ($resultadoRegistro) {
+        echo "Empleado registrado correctamente.\n";
+    } else {
+        echo "Error al registrar el empleado.\n";
+    }
+     
+    
+   // Datos para la edición del empleado
+$datosEdicionEmpleado = [
+    
+    'prefijo' => '8',
+    'tomo' => '990',
+    'asiento' => '1734',
+    'cedula' => '8-990-1734',
+    'genero' => 'F',
+    'nombre1' => 'Juan',
+    'nombre2' => 'Carlos',
+    'apellido1' => 'Gómez',
+    'apellido2' => 'Pérez',
+    'estado_civil' => 'Soltero',
+    'apellido_casada' => null,
+    'usa_apellido_casada' => 'No',
+    'fecha_nacimiento' => '1990-01-01',
+    'peso' => '70',
+    'estatura' => '175',
+    'tipo_sangre' => 'O+',
+    'condicion_fisica' => 'Buena',
+    'pais' => 'Panamá',
+    'provincia' => 'Panamá',
+    'distrito' => 'Panamá',
+    'corregimiento' => 'Bella Vista',
+    'comunidad' => 'ComunidadPrueba',
+    'calle' => 'CallePrueba',
+    'casa' => '123',
+    'estado' => 'Activo',
+    
+];
 
-    // elegir un distrito de forma aleatoria
-    $indice_distrito = rand(0, count($distritos) - 1);
-    $distrito_elegido = $distritos[$indice_distrito];
+// Llamada a la función de edición
+$resultadoEdicion = modificarEmpleado($datosEdicionEmpleado);
 
-    print_r($distrito_elegido);
+// Mostrar el resultado
+if ($resultadoEdicion) {
+    echo "Empleado editado correctamente.\n";
+} else {
+    echo "Error al editar el empleado.\n";
+    }
+    
+//Prueba para buscar Empleado
+    $cedulaParaPrueba = "8-990-1734";
+
+    // Llamada a la función de búsqueda
+    $resultadoBusqueda = buscarEmpleado($cedulaParaPrueba);
+    
+    // Mostrar el resultado
+    if ($resultadoBusqueda) {
+        echo "Cédula encontrada. Datos del empleado:\n";
+        print_r($resultadoBusqueda);
+    } else {
+        echo "Cédula no encontrada.\n";
+    }
+    ?>
+*/
+    
+    
+
 ?>
