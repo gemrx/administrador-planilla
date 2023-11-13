@@ -160,12 +160,12 @@ form.addEventListener('submit', (event) => {
         data: "accion=registrar&" + $('form').serialize(),
         dataType: 'json', // tipo de dato que tendra la respuesta
         success: (response) => {
-            if (response) {
+            if (response.resultado === false) {
+                alert("Ese número de cedula ya existe! Intenta con otro...")
+            } else {
                 alert("Empleado resgitrado con exito!")
                 document.querySelector('form').reset();
                 setearFechaInicial();
-            } else {
-                alert("Ha ocurrido un error al intentar resgitar el empleado!")
             }
         },
         error: function(xhr, status, error) {

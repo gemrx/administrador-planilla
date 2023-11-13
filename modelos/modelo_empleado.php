@@ -5,63 +5,76 @@
         return ($value === "") ? "NULL" : "'$value'";
     }
 
+    function existeEmpleado($cedula) {
+        global $conexion;
+        $query = "SELECT COUNT(*) as total FROM generales WHERE cedula = '$cedula'";
+        $query_result = mysqli_query($conexion, $query);
+        $fila = mysqli_fetch_assoc($query_result);
+        $total =  $fila["total"];
+        return ($total > 0);
+    }
+
 	function registrarEmpleado($arreglo_asociativo) {
         global $conexion;
-    
-        // Obtener los valores del arreglo asociativo
-        $prefijo = formatearValor($arreglo_asociativo['prefijo']);
-        $tomo = formatearValor($arreglo_asociativo['tomo']);
-        $asiento = formatearValor($arreglo_asociativo['asiento']);
-        $genero = formatearValor($arreglo_asociativo['genero']);
-        $cedula = formatearValor($arreglo_asociativo['cedula']);
-        $nombre1 = formatearValor($arreglo_asociativo['nombre1']);
-        $nombre2 = formatearValor($arreglo_asociativo['nombre2']);
-        $apellido1 = formatearValor($arreglo_asociativo['apellido1']);
-        $apellido2 = formatearValor($arreglo_asociativo['apellido2']);
-        $estado_civil = formatearValor($arreglo_asociativo['estado_civil']);
-        $apellido_casada = formatearValor($arreglo_asociativo['apellido_casada']);
-        $usa_apellido_casada = formatearValor($arreglo_asociativo['usa_apellido_casada']);
-        $fecha_nacimiento = formatearValor($arreglo_asociativo['fecha_nacimiento']);
-        $peso = formatearValor($arreglo_asociativo['peso']);
-        $estatura = formatearValor($arreglo_asociativo['estatura']);
-        $tipo_de_sangre = formatearValor($arreglo_asociativo['tipo_de_sangre']);
-        $condicion_fisica = formatearValor($arreglo_asociativo['condicion_fisica']);
-        $pais = formatearValor($arreglo_asociativo['pais']);
-        $provincia = formatearValor($arreglo_asociativo['provincia']);
-        $distrito = formatearValor($arreglo_asociativo['distrito']);
-        $corregimiento = formatearValor($arreglo_asociativo['corregimiento']);
-        $comunidad = formatearValor($arreglo_asociativo['comunidad']);
-        $calle = formatearValor($arreglo_asociativo['calle']);
-        $casa = formatearValor($arreglo_asociativo['casa']);
-        $estado = formatearValor($arreglo_asociativo['estado']);
-
-        // Preparar la consulta SQL para la inserción
-        $query = "INSERT INTO generales (
-                    prefijo, tomo, asiento, genero, cedula, nombre1, nombre2, apellido1, apellido2,
-                    estado_civil, apellido_casada, usa_apellido_casada, fecha_nacimiento, peso, estatura,
-                    tipo_de_sangre, condicion_fisica, pais, provincia, distrito, corregimiento, comunidad,
-                    calle, casa, estado
-                ) 
-                VALUES (
-                    $prefijo, $tomo, $asiento, $genero, $cedula, $nombre1, $nombre2, $apellido1, $apellido2,
-                    $estado_civil, $apellido_casada, $usa_apellido_casada, $fecha_nacimiento, $peso, $estatura,
-                    $tipo_de_sangre, $condicion_fisica, $pais, $provincia, $distrito, $corregimiento, $comunidad,
-                    $calle, $casa, $estado
-                )";
-                
-        // Ejecutar la consulta
-        $resultado = mysqli_query($conexion, $query);
-    
-        // Verificar si la consulta fue exitosa
-        if ($resultado) {
-            return true;  // Éxito al registrar al empleado
+        
+        if (existeEmpleado($arreglo_asociativo['cedula'])) {
+            return false;
         } else {
-            return false; // Error al registrar al empleado
-        }
+            // obtener los valores del arreglo asociativo
+            $prefijo = formatearValor($arreglo_asociativo['prefijo']);
+            $tomo = formatearValor($arreglo_asociativo['tomo']);
+            $asiento = formatearValor($arreglo_asociativo['asiento']);
+            $cedula = formatearValor($arreglo_asociativo['cedula']);
+            $genero = formatearValor($arreglo_asociativo['genero']);
+            $nombre1 = formatearValor($arreglo_asociativo['nombre1']);
+            $nombre2 = formatearValor($arreglo_asociativo['nombre2']);
+            $apellido1 = formatearValor($arreglo_asociativo['apellido1']);
+            $apellido2 = formatearValor($arreglo_asociativo['apellido2']);
+            $estado_civil = formatearValor($arreglo_asociativo['estado_civil']);
+            $apellido_casada = formatearValor($arreglo_asociativo['apellido_casada']);
+            $usa_apellido_casada = formatearValor($arreglo_asociativo['usa_apellido_casada']);
+            $fecha_nacimiento = formatearValor($arreglo_asociativo['fecha_nacimiento']);
+            $peso = formatearValor($arreglo_asociativo['peso']);
+            $estatura = formatearValor($arreglo_asociativo['estatura']);
+            $tipo_de_sangre = formatearValor($arreglo_asociativo['tipo_de_sangre']);
+            $condicion_fisica = formatearValor($arreglo_asociativo['condicion_fisica']);
+            $pais = formatearValor($arreglo_asociativo['pais']);
+            $provincia = formatearValor($arreglo_asociativo['provincia']);
+            $distrito = formatearValor($arreglo_asociativo['distrito']);
+            $corregimiento = formatearValor($arreglo_asociativo['corregimiento']);
+            $comunidad = formatearValor($arreglo_asociativo['comunidad']);
+            $calle = formatearValor($arreglo_asociativo['calle']);
+            $casa = formatearValor($arreglo_asociativo['casa']);
+            $estado = formatearValor($arreglo_asociativo['estado']);
+
+            // query para la insercion de los datos
+            $query = "INSERT INTO generales (
+                        prefijo, tomo, asiento, genero, cedula, nombre1, nombre2, apellido1, apellido2,
+                        estado_civil, apellido_casada, usa_apellido_casada, fecha_nacimiento, peso, estatura,
+                        tipo_de_sangre, condicion_fisica, pais, provincia, distrito, corregimiento, comunidad,
+                        calle, casa, estado
+                    ) 
+                    VALUES (
+                        $prefijo, $tomo, $asiento, $genero, $cedula, $nombre1, $nombre2, $apellido1, $apellido2,
+                        $estado_civil, $apellido_casada, $usa_apellido_casada, $fecha_nacimiento, $peso, $estatura,
+                        $tipo_de_sangre, $condicion_fisica, $pais, $provincia, $distrito, $corregimiento, $comunidad,
+                        $calle, $casa, $estado
+                    )";
+                    
+            // Ejecutar la consulta
+            $resultado = mysqli_query($conexion, $query);
+        
+            // Verificar si la consulta fue exitosa
+            if ($resultado) {
+                return true;  
+            } else {
+                return false; 
+            }
+        }  
     }
     
 
-    function buscarEmpleado($cedula) {
+    function obtenerEmpleado($cedula) {
         global $conexion;
 
         $query = "SELECT * FROM generales WHERE cedula = ?";
@@ -123,7 +136,7 @@
                 // Construir la consulta de actualización
                 $query = "UPDATE generales 
                           SET nombre1 = '$nombre1', 
-                              gener o= '$genero',
+                              genero = '$genero',
                               nombre2 = '$nombre2', 
                               apellido1 = '$apellido1', 
                               apellido2 = '$apellido2', 
