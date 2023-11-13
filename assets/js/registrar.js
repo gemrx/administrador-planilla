@@ -1,6 +1,7 @@
 //
 // VARIABLES
 //
+
 const form = document.querySelector('form');
 const inputFecha =  document.querySelector('#input-fecha');
 const selectGenero = document.querySelector('#select-genero');
@@ -17,7 +18,7 @@ const selectCorregimiento = document.querySelector('#select-corregimiento');
 const selectEstadoCivil = document.querySelector('#select-estado-civil');
 const inputEstatura = document.querySelector('#input-estatura');
 const inputsNumericos = document.querySelectorAll('.numerico');
-const buttonSubmit = document.querySelector('#submit');
+const buttonSubmit = document.querySelector('#button-submit');
 const selectPrefijo = document.querySelector('#select-prefijo');
 const inputTomo = document.querySelector('#input-tomo');
 const inputAsiento = document.querySelector('#input-asiento');
@@ -44,13 +45,10 @@ function setearFechaInicial() {
     inputFecha.value = `${actualyear}-${mesActual}-${diaActual}`;
 }
 
-
-
 //
-// EVENT LISTENERS
+// EVENTS LISTENERS
 //
 
-// cambiar genero de los estados civiles
 selectGenero.addEventListener('change', () => {
     if (selectGenero.value === 'F') {
         let nuevosEstadosCiviles = `<option value="SOLTERA" selected>Soltera</option>
@@ -179,4 +177,5 @@ form.addEventListener('submit', (event) => {
 //
 // EJECUCIONES
 //
+
 setearFechaInicial();

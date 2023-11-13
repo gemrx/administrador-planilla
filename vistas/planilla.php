@@ -34,6 +34,44 @@
     <main>
         <form action="">
             <h1>Planilla</h1>
+            <div class="row">
+                <div class="column">
+                    <label for="input-cedula">Cedula</label>
+                    <input type="text" name="input-cedula" id="input-cedula">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="input-numero-cheque">Número de cheque</label>
+                    <input type="text" name="input-numero-cheque" id="input-numero-cheque">
+                </div>
+                <div class="column">
+                    <label for="input-fecha">Fecha</label>
+                    <input type="date" name="input-fecha" id="input-fecha">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="input-destinatario">Pague a la orden de</label>
+                    <input type="text" name="" id="input-destinatario">
+                </div>
+            </div>
+            <div class="row cantidad">
+                <div class="column">
+                    <label for="input-monto">La suma de</label>
+                    <input type="text" name="input-monto" id="input-monto">
+                </div>
+                <div class="column">
+                    <label for="input-monto"></label>
+                    <input type="text" name="input-monto-letra" id="input-monto-letra">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="input-observaciones">Descripcion</label>
+                    <input type="text" name="input-observaciones" id="input-observaciones">
+                </div>
+            </div>
         </form>
     </main>
 </body>

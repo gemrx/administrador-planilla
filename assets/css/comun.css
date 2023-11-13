@@ -199,7 +199,7 @@ select:focus {
     display: none;
 }
 
-button#submit {
+button {
     border: 1px solid var(--blue);
     border: none;
     color: white;
@@ -213,9 +213,27 @@ button#submit {
     box-shadow: 0px 0px 0px hsl(0deg 0% 0% / 0);
     transition: box-shadow 150ms ease 0s
 }
-button#submit:hover {
+button:hover {
     background-color: var(--blue2);
     box-shadow: 0.8px 1.6px 2px hsla(0, 0%, 0%, 0.25);
+}
+
+#input-asiento, 
+#input-tomo {
+    width: 120px;
+}
+
+#select-pais {
+    width: 294px;
+}
+#select-provincia {
+    width: 225.6px;
+}
+#select-distrito {
+    width: 250px;
+}
+#select-corregimiento {
+    width: 250px;
 }
 
 

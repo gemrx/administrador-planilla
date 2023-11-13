@@ -32,8 +32,197 @@
         </ul>
     </nav>
     <main>
-        <form action="">
+        <form>
             <h1>Modificar Empleado</h1>
+            <div class="row">
+                <div class="column">
+                    <label for="">Cedula</label>
+                    <select name="select-prefijo" id="select-prefijo">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8" selected>8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                    </select>
+                </div>
+                <div class="column"> 
+                    <label for=""></label>
+                    <input type="number" name="input-tomo" id="input-tomo" placeholder="">
+                </div>
+                <div class="column">
+                    <label for=""></label>
+                    <input type="number" name="input-asiento" id="input-asiento">
+                </div>
+                <div class="column">
+                    <label class="label-modificar"></label>
+                    <button id="button-buscar">Buscar</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="select-genero">Género</label>
+                    <select name="select-genero" id="select-genero">
+                        <option value="M" selected>Masculino</option>
+                        <option value="F">Femenino</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="select-estado-civil">Estado Civil</label>
+                    <select name="select-estado-civil" id="select-estado-civil">
+                        <option value="SOLTERO" selected>Soltero</option>
+                        <option value="CASADO">Casado</option>
+                        <option value="VIUDO">Viudo</option>
+                        <option value="DIVORCIADO">Divorciado</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="">Nombre</label>
+                    <input type="text" name="input-nombre" id="input-nombre">
+                </div>
+                <div class="column">
+                    <label for="">
+                        <span>Segundo Nombre</span>
+                        <span class="opcional">(opcional)</span>
+                    </label>
+                    <input type="text" name="input-segundo-nombre" id="input-segundo-nombre">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="">Apellido</label>
+                    <input type="text" name="input-apellido" id="input-apellido">
+                </div>
+                <div class="column">
+                    <label for="input-segundo-apellido">
+                        <span>Segundo Apellido</span>
+                        <span class="opcional">(opcional)</span>
+                    </label>
+                    <input type="text" name="input-segundo-apellido" id="input-segundo-apellido">
+                </div>
+                <div class="column">
+                    <label for="input-apellido-casada" class="label-apellido-casada oculto">
+                        <span>Apellido de Casada</span>
+                        <span class="opcional">(opcional)</span>
+                    </label>
+                    <input type="text" name="input-apellido-casada" id="input-apellido-casada" class="oculto">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="input-fecha">Fecha de Nacimiento</label>
+                    <input type="date" name="input-fecha" id="input-fecha">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="input-estatura">
+                        <span>Estatura</span>
+                        <span class="pista">(metros)</span>
+                    </label>
+                    <input type="text" name="input-estatura" id="input-estatura" class="numerico">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="input-peso">
+                        <span>Peso</span>
+                        <span class="pista">(libras)</span>
+                    </label>
+                    <input type="text" name="input-peso" id="input-peso" class="numerico">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="select-tipo-sangre">Tipo de Sangre</label>
+                    <select name="select-tipo-sangre" id="select-tipo-sangre">
+                        <option value="A+" selected>A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="">Condición Física</label>
+                    <input type="text" name="input-condicion-fisica" id="input-condicion-fisica">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="select-pais" class="label-pais">País</label>
+                    <select name="select-pais" id="select-pais">
+                    </select>
+                </div>
+                <div class="column">
+                    <label for="select-provincia" class="label-provincia">Provincia</label>
+                    <select name="select-provincia" id="select-provincia">
+                    </select>
+                </div>
+                <div class="column">
+                    <label for="select-distrito" class="label-distrito">Distrito</label>
+                    <select name="select-distrito" id="select-distrito">
+                    </select>
+                </div>
+                <div class="column">
+                    <label for="select-corregimiento" class="label-corregimiento">Corregimiento</label>
+                    <select name="select-corregimiento" id="select-corregimiento">
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="input-comunidad">Comunidad</label>
+                    <input type="text" name="input-comunidad" id="input-comunidad">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="input-calle">
+                        <span>Calle</span>
+                        <span class="opcional">(opcional)</span>
+                    </label>
+                    <input type="text" name="input-calle" id="input-calle">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="input-casa">
+                        <span>Casa</span>
+                        <span class="opcional">(opcional)</span>
+                    </label>
+                    <input type="text" name="input-casa" id="input-casa">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="select-estado">Estado</label>
+                    <select name="select-estado" id="select-estado">
+                        <option value="1" selected>Activo</option>
+                        <option value="0">Inactivo</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <button id="button-submit">Registrar</button>
+                </div>
+            </div>
         </form>
     </main>
 </body>
