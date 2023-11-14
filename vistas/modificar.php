@@ -1,3 +1,4 @@
+<?php require(__DIR__ . "/../modelos/modelo_ubicacion.php") ;?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,24 +146,73 @@
                 <div class="column">
                     <label for="select-pais" class="label-pais">País</label>
                     <select name="select-pais" id="select-pais">
+                        <?php
+                            $paises = obtenerPaises();
+                            foreach ($paises as $pais) {
+                                if ($pais == "Panamá") {
+                                    echo "<option value=\"$pais\" selected>$pais</option>";
+                                } else {
+                                    echo "<option value=\"$pais\">$pais</option>";
+                                }
+                            }
+                        ?>
                         <option value="" class="oculto"></option>
                     </select>
                 </div>
                 <div class="column">
                     <label for="select-provincia" class="label-provincia">Provincia</label>
-                        <option value="" class="oculto"></option>
                     <select name="select-provincia" id="select-provincia">
+                        <?php
+                            $provincias = obtenerProvinciasDePanama();
+                            foreach ($provincias as $provincia) {
+                                $nombre = $provincia["nombre_provincia"];
+                                $codigo = $provincia["codigo_provincia"];
+                                $nombre_formateado = ucwords(strtolower(mb_strtolower($nombre, 'UTF-8')));
+                                if ($nombre == "PANAMA OESTE") {
+                                    echo "<option value=\"$codigo\" selected>$nombre_formateado</option>";
+                                } else {
+                                    echo "<option value=\"$codigo\">$nombre_formateado</option>";
+                                }
+                            }
+                        ?>
+                        <option value="" class="oculto"></option>
                     </select>
                 </div>
                 <div class="column">
                     <label for="select-distrito" class="label-distrito">Distrito</label>
-                        <option value="" class="oculto"></option>
                     <select name="select-distrito" id="select-distrito">
+                        <?php
+                            $distritos = obtenerDistritosDeLaPronvincia("13");
+                            foreach ($distritos as $distrito) {
+                                $nombre = $distrito["nombre_distrito"];
+                                $codigo = $distrito["codigo_distrito"];
+                                $nombre_formateado = ucwords(strtolower(mb_strtolower($nombre, 'UTF-8')));
+                                if ($nombre == "LA CHORRERA") {
+                                    echo "<option value=\"$codigo\" selected>$nombre_formateado</option>";
+                                } else {
+                                    echo "<option value=\"$codigo\">$nombre_formateado</option>";
+                                }
+                            }
+                        ?>
+                        <option value="" class="oculto"></option>
                     </select>
                 </div>
                 <div class="column">
                     <label for="select-corregimiento" class="label-corregimiento">Corregimiento</label>
                     <select name="select-corregimiento" id="select-corregimiento">
+                        <?php
+                            $corregimientos = obtenerCorregimientosDelDistrito("1302");
+                            foreach ($corregimientos as $corregimiento) {
+                                $nombre = $corregimiento["nombre_corregimiento"];
+                                $codigo = $corregimiento["codigo_corregimiento"];
+                                $nombre_formateado = ucwords(strtolower(mb_strtolower($nombre, 'UTF-8')));
+                                if ($nombre == "GUADALUPE") {
+                                    echo "<option value=\"$codigo\" selected>$nombre_formateado</option>";
+                                } else {
+                                    echo "<option value=\"$codigo\">$nombre_formateado</option>";
+                                }
+                            }
+                        ?>
                         <option value="" class="oculto"></option>
                     </select>
                 </div>
@@ -202,7 +252,7 @@
             </div>
             <div class="row">
                 <div class="column">
-                    <button id="button-submit">Registrar</button>
+                    <button id="button-submit">Guardar</button>
                 </div>
             </div>
         </form>

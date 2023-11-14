@@ -42,4 +42,12 @@
             echo json_encode($response);
         }
     }
+
+    if (isset($_GET["accion"])) {
+        if ($_GET["accion"] == "buscar") {
+            $cedula = $_GET["cedula"];
+            $response = obtenerEmpleado($cedula);
+            echo json_encode($response);
+        }
+    }
 ?>

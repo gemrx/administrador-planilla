@@ -179,7 +179,6 @@
                 <div class="column">
                     <label for="select-provincia" class="label-provincia">Provincia</label>
                     <select name="select-provincia" id="select-provincia">
-                        <option value="" class="oculto"></option>
                         <?php
                             $provincias = obtenerProvinciasDePanama();
                             foreach ($provincias as $provincia) {
@@ -193,12 +192,12 @@
                                 }
                             }
                         ?>
+                        <option value="" class="oculto"></option>
                     </select>
                 </div>
                 <div class="column">
                     <label for="select-distrito" class="label-distrito">Distrito</label>
                     <select name="select-distrito" id="select-distrito">
-                        <option value="" class="oculto"></option>
                         <?php
                             $distritos = obtenerDistritosDeLaPronvincia("13");
                             foreach ($distritos as $distrito) {
@@ -212,25 +211,26 @@
                                 }
                             }
                         ?>
+                        <option value="" class="oculto"></option>
                     </select>
                 </div>
                 <div class="column">
                     <label for="select-corregimiento" class="label-corregimiento">Corregimiento</label>
                     <select name="select-corregimiento" id="select-corregimiento">
-                        <option value="" class="oculto"></option>
                         <?php
                             $corregimientos = obtenerCorregimientosDelDistrito("1302");
                             foreach ($corregimientos as $corregimiento) {
                                 $nombre = $corregimiento["nombre_corregimiento"];
                                 $codigo = $corregimiento["codigo_corregimiento"];
                                 $nombre_formateado = ucwords(strtolower(mb_strtolower($nombre, 'UTF-8')));
-                                if ($nombre == "LA CHORRERA") {
+                                if ($nombre == "GUADALUPE") {
                                     echo "<option value=\"$codigo\" selected>$nombre_formateado</option>";
                                 } else {
                                     echo "<option value=\"$codigo\">$nombre_formateado</option>";
                                 }
                             }
                         ?>
+                        <option value="" class="oculto"></option>
                     </select>
                 </div>
             </div>
