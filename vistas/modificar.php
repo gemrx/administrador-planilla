@@ -36,30 +36,8 @@
             <h1>Modificar Empleado</h1>
             <div class="row">
                 <div class="column">
-                    <label for="">Cedula</label>
-                    <select name="select-prefijo" id="select-prefijo">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8" selected>8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                    </select>
-                </div>
-                <div class="column"> 
-                    <label for=""></label>
-                    <input type="number" name="input-tomo" id="input-tomo" placeholder="">
-                </div>
-                <div class="column">
-                    <label for=""></label>
-                    <input type="number" name="input-asiento" id="input-asiento">
+                    <label for="input-cedula">Cedula</label>
+                    <input type="text" name="input-cedula" id="input-cedula">
                 </div>
                 <div class="column">
                     <label class="label-modificar"></label>
@@ -167,21 +145,25 @@
                 <div class="column">
                     <label for="select-pais" class="label-pais">País</label>
                     <select name="select-pais" id="select-pais">
+                        <option value="" class="oculto"></option>
                     </select>
                 </div>
                 <div class="column">
                     <label for="select-provincia" class="label-provincia">Provincia</label>
+                        <option value="" class="oculto"></option>
                     <select name="select-provincia" id="select-provincia">
                     </select>
                 </div>
                 <div class="column">
                     <label for="select-distrito" class="label-distrito">Distrito</label>
+                        <option value="" class="oculto"></option>
                     <select name="select-distrito" id="select-distrito">
                     </select>
                 </div>
                 <div class="column">
                     <label for="select-corregimiento" class="label-corregimiento">Corregimiento</label>
                     <select name="select-corregimiento" id="select-corregimiento">
+                        <option value="" class="oculto"></option>
                     </select>
                 </div>
             </div>

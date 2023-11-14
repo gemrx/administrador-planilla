@@ -179,6 +179,7 @@
                 <div class="column">
                     <label for="select-provincia" class="label-provincia">Provincia</label>
                     <select name="select-provincia" id="select-provincia">
+                        <option value="" class="oculto"></option>
                         <?php
                             $provincias = obtenerProvinciasDePanama();
                             foreach ($provincias as $provincia) {
@@ -197,6 +198,7 @@
                 <div class="column">
                     <label for="select-distrito" class="label-distrito">Distrito</label>
                     <select name="select-distrito" id="select-distrito">
+                        <option value="" class="oculto"></option>
                         <?php
                             $distritos = obtenerDistritosDeLaPronvincia("13");
                             foreach ($distritos as $distrito) {
@@ -215,6 +217,7 @@
                 <div class="column">
                     <label for="select-corregimiento" class="label-corregimiento">Corregimiento</label>
                     <select name="select-corregimiento" id="select-corregimiento">
+                        <option value="" class="oculto"></option>
                         <?php
                             $corregimientos = obtenerCorregimientosDelDistrito("1302");
                             foreach ($corregimientos as $corregimiento) {

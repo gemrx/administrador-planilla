@@ -3,5 +3,5 @@
     require(__DIR__ ."/modelos/modelo_ubicacion.php");
     
     
-    var_dump(existeEmpleado("8-966-1581"));
+    var_dump(obtenerEmpleado('1-2455-90021'));
 ?>

@@ -73,26 +73,24 @@
         }  
     }
     
-
     function obtenerEmpleado($cedula) {
-        global $conexion;
+        // verificar que exista el usuario
+        if (!existeEmpleado($cedula)) return false; 
 
-        $query = "SELECT * FROM generales WHERE cedula = ?";
-        $stmt = mysqli_prepare($conexion, $query);
-    
-        // Vincular el parámetro
-        mysqli_stmt_bind_param($stmt, 's', $cedula);
-    
-        // Ejecutar la consulta
-        mysqli_stmt_execute($stmt);
-    
-        // Obtener el resultado de la consulta
-        $resultado = mysqli_stmt_get_result($stmt);
-    
-        // Si se encontró el empleado, devolver un array asociativo con los datos, de lo contrario, devolver null
-        return mysqli_num_rows($resultado) > 0 ? mysqli_fetch_assoc($resultado) : null;
+        // configuracion del query
+        global $conexion;
+        $query = "SELECT * FROM generales WHERE cedula = '$cedula'";
+        $query_result = mysqli_query($conexion, $query);
+
+        // verificar que el query no de errores
+        if (!$query_result) {
+            return false;
+        }
+
+        // retornar los datos de la fila obtenida
+        $fila = mysqli_fetch_assoc($query_result);
+        return $fila;
     }
-    
 
     function modificarEmpleado($datosEmpleado) {
         global $conexion;

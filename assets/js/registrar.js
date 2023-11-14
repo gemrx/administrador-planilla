@@ -45,6 +45,7 @@ function setearFechaInicial() {
     inputFecha.value = `${actualyear}-${mesActual}-${diaActual}`;
 }
 
+
 //
 // EVENTS LISTENERS
 //
@@ -81,22 +82,34 @@ selectEstadoCivil.addEventListener('change', () => {
     }
 })
 
-// ocultar / ocultar provincia, distrito y corregimiento
+// ocultar / mostrar provincia, distrito y corregimiento
 selectPais.addEventListener('change', () => {
     if (selectPais.value !== 'Panamá') {
+        // asignarles un string vacio como valor por defecto
+        selectProvincia.value = '';
+        selectDistrito.value = '';
+        selectCorregimiento.value = '';  
+
+        // ocultar los elementos
         labelProvincia.classList.add('oculto')
         labelDistrito.classList.add('oculto')
         labelCorregimiento.classList.add('oculto')
         selectProvincia.classList.add('oculto');
         selectDistrito.classList.add('oculto');
-        selectCorregimiento.classList.add('oculto');
+        selectCorregimiento.classList.add('oculto'); 
     } else {
+        // mostrar los elementos
         labelProvincia.classList.remove('oculto')
         labelDistrito.classList.remove('oculto')
         labelCorregimiento.classList.remove('oculto')
         selectProvincia.classList.remove('oculto');
         selectDistrito.classList.remove('oculto');
         selectCorregimiento.classList.remove('oculto');
+
+        // asignarles la primera opcion como su valor por defecto
+        selectProvincia.value = selectProvincia.options[0].value;
+        selectDistrito.value = selectDistrito.options[0].value;
+        selectCorregimiento.value = selectCorregimiento.options[0].value;
     }
 })
 
@@ -152,10 +165,18 @@ inputsNumericos.forEach(input => {
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
+
+    // obtener todos los datos del formulario en formato json
+    const formData =  new FormData(event.target);
+    const datos = Object.fromEntries(formData.entries());
+
+    // agregar la accion que se deasea realizar
+    datos.accion = "registrar" 
+
     $.ajax({
         type: 'POST',
         url: '/administrador-planilla/controladores/controlador_empleado.php',
-        data: "accion=registrar&" + $('form').serialize(),
+        data: datos,
         dataType: 'json', // tipo de dato que tendra la respuesta
         success: (response) => {
             if (response.resultado === false) {
