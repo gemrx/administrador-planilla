@@ -52,7 +52,7 @@
             </div>
             <div class="row">
                 <div class="column">
-                    <label for="input-destinatario">Pague a la orden de</label>
+                    <label for="input-destinatario">Paguese a la orden de</label>
                     <input type="text" name="" id="input-destinatario">
                 </div>
             </div>

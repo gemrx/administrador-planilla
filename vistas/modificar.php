@@ -252,7 +252,7 @@
             </div>
             <div class="row">
                 <div class="column">
-                    <button id="button-submit">Guardar</button>
+                    <button id="button-modificar" disabled>Modificar</button>
                 </div>
             </div>
         </form>

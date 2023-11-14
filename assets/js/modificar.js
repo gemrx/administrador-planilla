@@ -3,6 +3,7 @@
 //
 const form = document.querySelector('form');
 const buttonBuscar = document.querySelector('#button-buscar');
+const buttonModificar = document.querySelector('#button-modificar');
 const labelApellidoCasada = document.querySelector('.label-apellido-casada');
 const labelPais = document.querySelector('.label-pais');
 const labelProvincia = document.querySelector('.label-provincia');
@@ -35,7 +36,6 @@ const selectEstado = document.querySelector('#select-estado');
 //
 
 function actualizarCampos(objetoDatos) {
-    console.log(objetoDatos);
     const changeEvent = new Event('change');
 
     // genero
@@ -86,15 +86,19 @@ function actualizarCampos(objetoDatos) {
             }
         })
     }
-
-    
-    
     inputComunidad.value = objetoDatos.comunidad;
     inputCalle.value = objetoDatos.calle;
     inputCasa.value = objetoDatos.casa;
     selectEstado.value = objetoDatos.estado;
 }
 
+function setearFechaInicial() {
+    let fechaActual = new Date();
+    let actualyear = fechaActual.getFullYear();
+    let mesActual = String(fechaActual.getMonth() + 1).padStart(2, '0');
+    let diaActual = String(fechaActual.getDate()).padStart(2, '0');
+    inputFecha.value = `${actualyear}-${mesActual}-${diaActual}`;
+}
 
 
 //
@@ -208,7 +212,12 @@ selectDistrito.addEventListener('change', () => {
 })
 
 // buscar empleado
-buttonBuscar.addEventListener('click', () => {
+buttonBuscar.addEventListener('click', (event) => {
+    event.preventDefault();
+    if (inputCedula.value ==='') {
+        alert('Porfavor ingresa la cedula de empleado...');
+        return;
+    }
     $.ajax({
         type: 'GET',
         url: '/administrador-planilla/controladores/controlador_empleado.php',
@@ -220,8 +229,11 @@ buttonBuscar.addEventListener('click', () => {
         success: (response) => {
             if (response === false) {
                 alert("No existe empleado registrado con esa cedula...")
+                inputCedula.value = "";
+                return;
             }
             actualizarCampos(response);
+            buttonModificar.removeAttribute("disabled");
         },
         error: function(xhr, status, error) {
             console.error("Error en la solicitud AJAX:", status, error);
@@ -230,9 +242,38 @@ buttonBuscar.addEventListener('click', () => {
     })
 })
 
-form.addEventListener('submit', (event) => {
+buttonModificar.addEventListener('click', (event) => {
     event.preventDefault();
+
+    // obtener todos los datos del formulario en formato json
+    const form = document.querySelector('form');
+    const formData =  new FormData(form);
+    const datos = Object.fromEntries(formData.entries());
+    datos.accion = "modificar";
+
+    $.ajax({
+        type: 'POST',
+        url: '/administrador-planilla/controladores/controlador_empleado.php',
+        data: datos,
+        dataType: 'json', // tipo de dato que tendra la respuesta
+        success: (response) => {
+            if (response) {
+                alert("Empleado modificado con exito!");
+                form.reset();
+                setearFechaInicial();
+                buttonModificar.removeAttribute("disabled");
+                return;
+            }
+            alert("Ah ocurrido un error al intentar modificar al empleado...");
+        },
+        error: function(xhr, status, error) {
+            console.error("Error en la solicitud AJAX:", status, error);
+            console.log(xhr.responseText); // mostrar la respuesta del servidor
+        }
+    })
 })
+
+setearFechaInicial();
 
 
 

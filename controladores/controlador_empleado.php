@@ -41,6 +41,36 @@
 
             echo json_encode($response);
         }
+
+        if ($_POST["accion"] == "modificar") {
+            $datosEmpleado = array(
+                "cedula" => $_POST['input-cedula'],
+                "genero" => $_POST['select-genero'],
+                "estado_civil" => $_POST['select-estado-civil'],
+                "nombre1" => $_POST['input-nombre'],
+                "nombre2" => $_POST['input-segundo-nombre'],
+                "apellido1" => $_POST['input-apellido'],
+                "apellido2" => $_POST['input-segundo-apellido'],
+                "apellido_casada" => $_POST["input-apellido-casada"],
+                "fecha_nacimiento" => $_POST['input-fecha'],
+                "peso" => $_POST['input-peso'],
+                "estatura" => $_POST['input-estatura'],
+                "tipo_de_sangre" => $_POST['select-tipo-sangre'],
+                "condicion_fisica" => $_POST['input-condicion-fisica'],
+                "pais" => $_POST['select-pais'],
+                "provincia" => $_POST['select-provincia'],
+                "distrito" => $_POST['select-distrito'],
+                "corregimiento" => $_POST['select-corregimiento'],
+                "comunidad" => $_POST['input-comunidad'],
+                "calle" => $_POST['input-calle'],
+                "casa" => $_POST['input-casa'],
+                "estado" => $_POST['select-estado'],
+            );
+
+            $datosEmpleado["usa_apellido_casada"] = ($_POST["input-apellido-casada"] == "") ? "0" : "1";
+            $response = modificarEmpleado($datosEmpleado);
+            echo $response;
+        }
     }
 
     if (isset($_GET["accion"])) {
