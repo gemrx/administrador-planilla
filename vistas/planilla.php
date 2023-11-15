@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="column">
                     <label for="input-destinatario">Paguese a la orden de</label>
-                    <input type="text" name="" id="input-destinatario">
+                    <input type="text" name="" id="input-beneficiario" disabled>
                 </div>
             </div>
             <div class="row cantidad">
@@ -63,13 +63,18 @@
                 </div>
                 <div class="column">
                     <label for="input-monto"></label>
-                    <input type="text" name="input-monto-letra" id="input-monto-letra">
+                    <input type="text" name="input-monto-letras" id="input-monto-letras" spellcheck="false" disabled>
                 </div>
             </div>
             <div class="row">
                 <div class="column">
                     <label for="input-observaciones">Descripcion</label>
                     <input type="text" name="input-observaciones" id="input-observaciones">
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <button id="button-registrar">Registrar</button>
                 </div>
             </div>
         </form>

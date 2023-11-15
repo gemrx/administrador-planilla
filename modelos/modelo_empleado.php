@@ -145,12 +145,15 @@
                   WHERE cedula = '$cedula'";
         return mysqli_query($conexion, $query);
     }
-    
-    
-    
-    
-    
 
-
-  
+    function obtenerEmpleados() {
+        global $conexion;
+        $query = "SELECT cedula, nombre1, apellido1 FROM generales";
+        $query_result = mysqli_query($conexion, $query);
+        $empleados = [];
+        while ($fila_actual = mysqli_fetch_assoc($query_result)) {
+            $empleados[] = $fila_actual; // agregar la fila actual como un arreglo asociativo
+        }
+        return $empleados;
+    }
 ?>

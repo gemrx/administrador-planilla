@@ -35,6 +35,21 @@ const selectEstado = document.querySelector('#select-estado');
 // FUNCIONES
 //
 
+function verificarCampos() {
+    if (inputNombre1 === '') {
+        alert('Porfavor ingresa el primer nombre..');
+    }
+    if (inputApellido1 === '') {
+        alert('Porfavor ingresa el apellido nombre..');
+    }
+    if (inputEstatura === '') {
+        alert('Porfavor ingresa la estatura..');
+    }
+    if (inputPeso === '') {
+        alert('Porfavor ingresa el el peso..');
+    }
+}
+
 function actualizarCampos(objetoDatos) {
     const changeEvent = new Event('change');
 

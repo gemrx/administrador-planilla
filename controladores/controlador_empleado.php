@@ -79,5 +79,10 @@
             $response = obtenerEmpleado($cedula);
             echo json_encode($response);
         }
+
+        if ($_GET["accion"] == "obtnerCedulasYNombres") {
+            $response = obtenerEmpleados();
+            echo json_encode($response);
+        }
     }
 ?>
